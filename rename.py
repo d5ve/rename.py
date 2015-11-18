@@ -23,6 +23,10 @@ def main(argv):
         elif opt == "--doit":
             doit = True
 
+    if len(args) < 3:
+        usage("")
+        sys.exit(2)
+
     pattern = args.pop(0)
     sub     = args.pop(0)
 
