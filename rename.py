@@ -1,6 +1,8 @@
 #!/usr/bin/python
 
 import getopt
+import re
+import shutil
 import sys
 
 def main(argv):
@@ -22,11 +24,21 @@ def main(argv):
             doit = True
 
     pattern = args.pop(0)
+    sub     = args.pop(0)
+
+    for infile in args:
+        outfile = re.sub(pattern, sub, infile)
+        if infile == outfile:
+            print "No change to " + infile
+        else:
+            print infile + "  -->  " + outfile
+            if doit:
+                shutil.move(infile, outfile)
 
 def usage(msg):
     if msg:
         print msg
-    print "USAGE: rename.py <regex> <files> [--doit]"
+    print "USAGE: rename.py <pattern> <replacement> <files> [--doit]"
 
 if __name__ == "__main__":
     main(sys.argv[1:])
