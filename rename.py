@@ -1,6 +1,6 @@
 #!/usr/bin/python
 
-"""rename.py - regex batch file renamer
+r"""rename.py - regex batch file renamer
 
 Inspired by Larry Wall's filename fixer perl script:
         The Perl Coookbook,
